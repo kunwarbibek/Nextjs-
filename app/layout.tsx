@@ -1,6 +1,14 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import "./globals.css";
+import { Inter } from "next/font/google";
+
+
+const inter = Inter({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    display: "swap"
+});
 
 export const metadata = {
     title: "Bibek Kunwar",
@@ -14,7 +22,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>
+            <body className={inter.className}>
                 <header style={{ padding: 12, background: "#a69e9e" }}>
 
                     <nav style={{ display: "flex", gap: 12 }}>
