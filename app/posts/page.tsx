@@ -4,6 +4,7 @@ export default async function Posts() {
     })
     const posts = await res.json()
 
+    throw new Error("Something went wrong!");
     return (
         <div style={{ padding: 20 }}>
             <h1>Posts</h1>
