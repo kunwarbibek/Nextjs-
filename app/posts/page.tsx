@@ -1,10 +1,10 @@
 export default async function Posts() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        // cache: 'no-store' // to disable caching and always fetch fresh da
-    })
-    const posts = await res.json()
+    const res = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+    );
 
-    throw new Error("Something went wrong!");
+    const posts = await res.json();
+
     return (
         <div style={{ padding: 20 }}>
             <h1>Posts</h1>
@@ -14,5 +14,5 @@ export default async function Posts() {
                 ))}
             </ul>
         </div>
-    )
+    );
 }

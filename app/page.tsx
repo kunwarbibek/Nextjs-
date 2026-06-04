@@ -7,11 +7,11 @@ export default async function Posts() {
     return (
         <div style={{ padding: 20 }}>
             <h1>Posts</h1>
-            <ul>
+            {/* <ul>
                 {posts.map((post: any) => (
                     <li key={post.id}>{post.title}</li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
     )
 }
