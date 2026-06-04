@@ -1,17 +1,20 @@
+import { notFound } from "next/navigation";
+
 interface BlogPageProps {
     params: Promise<{ slug: string }>
 }
 
+// 1. Switched keys to lowercase for reliable URL matching
 const BlogData: Record<string, { title: string, content: string }> = {
-    "Nextjs": {
+    "nextjs": {
         title: "Nextjs Learning",
         content: "Nextjs is a React framework for building web applications."
     },
-    "Reactjs": {
+    "reactjs": {
         title: "Reactjs Learning",
         content: "Reactjs is a JavaScript library for building user interfaces."
     },
-    "Node": {
+    "node": {
         title: "Node Learning",
         content: "Node is a JavaScript runtime for building web applications."
     }
@@ -19,14 +22,16 @@ const BlogData: Record<string, { title: string, content: string }> = {
 
 export default async function BlogDetailPage({ params }: BlogPageProps) {
     const { slug } = await params;
-    const blog = BlogData[slug];
+
+    // 2. Convert incoming slug to lowercase to prevent case-mismatch bugs
+    const normalizedSlug = slug.toLowerCase();
+    const blog = BlogData[normalizedSlug];
+
+    // 3. Recommended: Use Next.js notFound() to trigger your global error/not-found page
     if (!blog) {
-        return (
-            <>
-                <h1>Blog Not Found</h1>
-            </>
-        )
+        notFound();
     }
+
     return (
         <>
             <h1>{blog.title}</h1>
